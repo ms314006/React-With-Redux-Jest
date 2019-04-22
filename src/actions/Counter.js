@@ -1,8 +1,28 @@
 export const ADD_COUNTER = 'ADD_COUNTER';
 
-const addCounter = () => ({
+export const addCounter = () => ({
   type: ADD_COUNTER,
   payload: { addQuantity: 1, },
 });
 
-export default addCounter;
+export const FETCH_COUNT_REQUEST = 'FETCH_COUNT_REQUEST';
+
+const fetchTodosRequest = () => ({
+  type: FETCH_COUNT_REQUEST,
+});
+
+export const FETCH_COUNT_SUCCESS = 'FETCH_COUNT_SUCCESS';
+
+const fetchCountSuccess = body => ({
+  type: FETCH_COUNT_SUCCESS,
+  count: body.count,
+});
+
+export const fetchCount = () => (
+  (dispatch) => {
+    dispatch(fetchTodosRequest());
+    return fetch('http://example.com/count')
+      .then(res => res.json())
+      .then(body => dispatch(fetchCountSuccess(body)));
+  }
+);
