@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import addCounter from '../../actions/Counter';
 
-const Counter = (props) => {
+export const Counter = (props) => {
   const { count, addCount, } = props;
   return (
     <div>
