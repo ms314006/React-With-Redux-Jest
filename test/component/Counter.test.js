@@ -34,17 +34,31 @@ describe('addCount', () => {
   });
 
   test('test reducer', () => {
-    expect(reducer(undefined, {})).toEqual({
-      count: 0,
-      request: false,
-    });
+    const initialData = { count: 0, request: false, };
+    expect(reducer(undefined, {})).toEqual(initialData);
 
-    expect(reducer({
-      count: 0,
-      request: false,
-    }, actions.addCounter())).toEqual({
-      count: 1,
-      request: false,
-    });
+    expect(reducer(initialData,
+      actions.addCounter())).toEqual(
+      {
+        count: 1,
+        request: false,
+      }
+    );
+
+    expect(reducer(initialData,
+      actions.fetchTodosRequest())).toEqual(
+      {
+        count: 0,
+        request: true,
+      }
+    );
+
+    expect(reducer(initialData,
+      actions.fetchCountSuccess({ count: 2, }))).toEqual(
+      {
+        count: 2,
+        request: false,
+      }
+    );
   });
 });

@@ -7,13 +7,13 @@ export const addCounter = () => ({
 
 export const FETCH_COUNT_REQUEST = 'FETCH_COUNT_REQUEST';
 
-const fetchTodosRequest = () => ({
+export const fetchTodosRequest = () => ({
   type: FETCH_COUNT_REQUEST,
 });
 
 export const FETCH_COUNT_SUCCESS = 'FETCH_COUNT_SUCCESS';
 
-const fetchCountSuccess = body => ({
+export const fetchCountSuccess = body => ({
   type: FETCH_COUNT_SUCCESS,
   count: body.count,
 });
