@@ -67,7 +67,7 @@ describe('addCount', () => {
     );
 
     expect(reducer(initialData,
-      actions.fetchTodosRequest())).toEqual(
+      actions.fetchCountRequest())).toEqual(
       {
         count: 0,
         request: true,

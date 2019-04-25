@@ -7,7 +7,7 @@ export const addCounter = () => ({
 
 export const FETCH_COUNT_REQUEST = 'FETCH_COUNT_REQUEST';
 
-export const fetchTodosRequest = () => ({
+export const fetchCountRequest = () => ({
   type: FETCH_COUNT_REQUEST,
 });
 
@@ -20,7 +20,7 @@ export const fetchCountSuccess = body => ({
 
 export const fetchCount = () => (
   (dispatch) => {
-    dispatch(fetchTodosRequest());
+    dispatch(fetchCountRequest());
     return fetch('http://example.com/count')
       .then(res => res.json())
       .then(body => dispatch(fetchCountSuccess(body)));
