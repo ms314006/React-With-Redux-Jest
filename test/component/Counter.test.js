@@ -13,21 +13,6 @@ Enzyme.configure({ adapter: new Adapter(), });
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-const setup = () => {
-
-  const props = {
-    count: 0,
-    addCount: jest.fn(),
-  };
-
-  const counter = shallow(<Counter {...props} />);
-
-  return {
-    props,
-    counter,
-  };
-};
-
 describe('addCount', () => {
   afterEach(() => {
     fetchMock.restore();
@@ -84,7 +69,13 @@ describe('addCount', () => {
   });
 
   test('<Counter />', () => {
-    const { counter, props, } = setup();
+
+    const props = {
+      count: 0,
+      addCount: jest.fn(),
+    };
+
+    const counter = shallow(<Counter {...props} />);
 
     counter.find('div').find('button').at(0).simulate('click');
     expect(props.addCount.mock.calls.length).toBe(1);
